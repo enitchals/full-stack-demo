@@ -33,7 +33,9 @@ const taskSlice = createSlice({
       if (indexOfTask === 0){
         return [updatedTask].concat(state.slice(1))
       } else {
-        return state.slice(0,indexOfTask).concat(updatedTask).concat(state.slice(indexOfTask+1))
+        return state.slice(0,indexOfTask)
+          .concat(updatedTask)
+          .concat(state.slice(indexOfTask+1))
       }
     }
   }
