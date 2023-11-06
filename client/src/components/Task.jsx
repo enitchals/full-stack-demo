@@ -1,11 +1,12 @@
 import '../App.css'
+import './task.css'
 
 function Task({task}) {
 
   // Task is used in TaskList to represent a single Task
 
   return (
-    <div>{task.task}</div>
+    <div className={task.done ? 'done' : 'todo'}>{task.task}</div>
   )
 }
 
