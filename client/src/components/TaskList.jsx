@@ -1,15 +1,25 @@
 import '../App.css'
 import {useSelector} from 'react-redux'
 import Task from './Task'
+import { useGetTasksQuery } from '../store/taskSlice'
 
 function TaskList() {
 
-  const tasks = useSelector(state => state.tasks)
-  console.log(tasks)
+  const {data, isError, isLoading} = useGetTasksQuery();
+
+  if (isLoading){
+    return (<p>Loading . . .</p>)
+  }
+
+  if (isError){
+    return (<p>Error . . .</p>)
+  }
+
+  console.log(data)
 
   return (
     <>
-      {tasks.map((t,i) => <Task task={t} key={`${t.task}-${i}`} />)}
+      {data.map((t,i) => <Task task={t} key={`${t.task}-${i}`} />)}
     </>
   )
 }
