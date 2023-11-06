@@ -8,6 +8,8 @@ const PORT = 3000;
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+app.use('/api', require('./api'))
+
 // error handling middleware
 app.use((err, req, res, next) => {
   res.status(err.status ?? 500).send(err.message ?? 'Error!');
