@@ -11,6 +11,15 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.post('/', async(req, res, next) => {
+  try{
+    const newTask = await prisma.task.create({data: req.body})
+    res.json(newTask)
+  } catch(err){
+    next(err)
+  }
+})
+
 router.put('/toggle/:id', async(req, res, next) => {
   try{
     const id = +req.params.id // make it a number

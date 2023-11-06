@@ -1,15 +1,14 @@
 import { useState } from 'react'
-import {useDispatch} from 'react-redux'
+import { useAddTaskMutation } from '../store/taskSlice'
 import '../App.css'
-import { addTask } from '../store/taskSlice'
 
 function TaskForm() {
   const [task, setTask] = useState('')
-  const dispatch = useDispatch()
+  const [addTask] = useAddTaskMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTask(task))
+    addTask(task)
     setTask('')
   }
 
