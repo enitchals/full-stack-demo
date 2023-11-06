@@ -1,13 +1,12 @@
-import {useDispatch} from 'react-redux'
-import { toggleTask } from '../store/taskSlice';
 import '../App.css'
 import './task.css'
+import { useToggleTaskMutation } from '../store/taskSlice'
 
 function Task({task}) {
-  const dispatch = useDispatch();
+  const [toggleTask] = useToggleTaskMutation()
 
-  const toggle = () => {
-    dispatch(toggleTask(task.task))
+  const toggle = async() => {
+    await toggleTask(task.id)
   }
 
   return (

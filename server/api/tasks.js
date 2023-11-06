@@ -10,3 +10,23 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.put('/toggle/:id', async(req, res, next) => {
+  try{
+    const id = +req.params.id // make it a number
+    const task = await prisma.task.findUnique({where: {id}})
+    if (!task){
+      return next({
+        status: 404,
+        message: 'Could not find that task'
+      })
+    }
+    const updatedTask = await prisma.task.update({
+      where: {id},
+      data: {done: !task.done}
+    })
+    res.json(updatedTask)
+  } catch(err){
+    next(err)
+  }
+})

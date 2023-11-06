@@ -7,9 +7,18 @@ export const tasksApi = createApi({
   }),
   endpoints: (builder) => ({
     getTasks: builder.query({
-      query: () => "/tasks"
+      query: () => "/tasks",
+      providesTags: ["Tasks"]
+    }),
+    toggleTask: builder.mutation({
+      query: (taskId) => ({
+        url: `/tasks/toggle/${taskId}`,
+        method: 'PUT'
+        // normally we would probably send a body in a PUT
+      }),
+      invalidatesTags: ["Tasks"]
     })
   })
 })
 
-export const {useGetTasksQuery} = tasksApi
+export const {useGetTasksQuery, useToggleTaskMutation} = tasksApi
