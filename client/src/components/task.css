@@ -1,7 +1,27 @@
+.task {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 .done {
   text-decoration: line-through;
 }
 
 .todo {
   font-weight: bold;
+}
+
+.complete-task {
+  margin-right: 10px;
+}
+
+.delete-task {
+  font-size: 10px;
+  font-weight: normal;
+  margin-left: 15px;
+  color: blue;
+  text-decoration: none;
 }

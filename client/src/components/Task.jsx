@@ -16,10 +16,12 @@ function Task({task}) {
   }
 
   return (
-    <div className={task.done ? 'task done' : 'task todo'} onClick={toggle}>
-      <button onClick={toggle}>√</button>
-      {task.task}
-      <div onClick={deleteHandler} >remove</div>
+    <div className='task'>
+      <button onClick={toggle} className='complete-task'>✔</button>
+        <div className={task.done ? 'done' : 'todo'}>
+          {task.task}
+        </div>
+      <div onClick={deleteHandler} className='delete-task'>remove</div>
     </div>
   )
 }

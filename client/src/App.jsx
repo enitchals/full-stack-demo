@@ -10,7 +10,6 @@ function App() {
       <h1>To Do List</h1>
       <nav>
         <Link to="/tasks">All Tasks</Link>
-        <br/>
         <Link to="/new">Add Task</Link>
       </nav>
       <Routes>
