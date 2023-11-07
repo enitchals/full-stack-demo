@@ -39,3 +39,20 @@ router.put('/toggle/:id', async(req, res, next) => {
     next(err)
   }
 })
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const id = +req.params.id;
+    const task = await prisma.task.findUnique({ where: { id } });
+    if (!task) {
+      return next({
+        status: 404,
+        message: `Could not find task with id ${id}.`,
+      });
+    }
+    await prisma.task.delete({ where: { id } });
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+});
