@@ -1,5 +1,6 @@
 const prisma = require('../prisma')
 
+// the same mock data we started with on the frontend
 const mockData = [
   {
     task: 'make react components',
@@ -15,6 +16,7 @@ const mockData = [
   }
 ]
 
+// seed function loops over the mock data and creates a task for each task in mockData
 const seed = async() => {
   for (task of mockData){
     await prisma.task.create({data: task})

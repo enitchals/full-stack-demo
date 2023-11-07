@@ -3,6 +3,9 @@ const cors = require('cors')
 
 const app = express();
 
+// cors lets us connect from our server process to our database process
+// for more information about CORS:
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 app.use(cors())
 
 const PORT = 3000;
