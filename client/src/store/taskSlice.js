@@ -6,10 +6,12 @@ export const tasksApi = createApi({
     baseUrl: 'http://localhost:3000/api'
   }),
   endpoints: (builder) => ({
+    // RTK Query for getting all tasks
     getTasks: builder.query({
       query: () => "/tasks",
       providesTags: ["Tasks"]
     }),
+    // RTK Query Mutation for toggling the 'done' status of a task by ID
     toggleTask: builder.mutation({
       query: (taskId) => ({
         url: `/tasks/toggle/${taskId}`,
@@ -18,6 +20,7 @@ export const tasksApi = createApi({
       }),
       invalidatesTags: ["Tasks"]
     }),
+    // RTK Query Mutation for adding a new task to the list
     addTask: builder.mutation({
       query: (task) => ({
         url: `/tasks/`,
@@ -26,6 +29,7 @@ export const tasksApi = createApi({
       }),
       invalidatesTags: ["Tasks"]
     }),
+    // RTK Query Mutation for deleting a task by ID
     deleteTask: builder.mutation({
       query: (taskId) => ({
         url: `/tasks/${taskId}`,

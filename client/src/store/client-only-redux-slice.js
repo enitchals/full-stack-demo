@@ -1,3 +1,6 @@
+// This is no longer used in this project!
+// It was a temporary implementation when our app was frontend-only. It was replaced by the new taskSlice.js file, which has an RTK Query API slice in it.
+
 import {createSlice} from '@reduxjs/toolkit'
 
 const mockData = [
@@ -31,8 +34,10 @@ const taskSlice = createSlice({
       const updatedTask = {task: payload, done: !currentStatus}
       // create and return the updated task array
       if (indexOfTask === 0){
+        // if the one we're updating is the first task in the array, we need to update the first one
         return [updatedTask].concat(state.slice(1))
       } else {
+        // if the one we're updating is somewhere in the middle/end, we need to add it into the correct spot
         return state.slice(0,indexOfTask)
           .concat(updatedTask)
           .concat(state.slice(indexOfTask+1))
